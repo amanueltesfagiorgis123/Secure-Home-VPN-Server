@@ -1,0 +1,3 @@
+Subnet Selection: Ensured the VPN client subnet (10.6.0.0/24) did not conflict with the primary home router subnet to prevent routing loops.
+Client Status Verification: Utilized pivpn list to monitor active versus disabled profiles during device configuration and onboarding.
+Public IP Handling: Tested connectivity remotely over cellular data to verify proper NAT traversal and handshake completion.

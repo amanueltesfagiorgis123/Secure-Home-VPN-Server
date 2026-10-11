@@ -13,3 +13,13 @@ A personal project implementing a lightweight, high-performance Virtual Private 
 ---
 
 ## 🛠️ Architecture & Network Topology
+[ Remote Client (Phone / Laptop) ]
+│ (Encrypted WireGuard Tunnel over Cellular/Public Wi-Fi)
+▼
+[ Home Internet Router (Port Forwarding UDP 51830) ]
+│
+▼
+[ Raspberry Pi VPN Server (Static Local IP) ]
+│ (Local Subnet Routing: 10.6.0.0/24)
+▼
+[ Home Network Resources ]

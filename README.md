@@ -42,3 +42,9 @@ A personal project implementing a lightweight, high-performance Virtual Private 
 ### 5. Connect your device 
 
 
+***
+
+<Elicitations message="What would you like to do next?">
+  <Elicitation label="Add security best practices" query="How can I add a security section to this README covering firewall rules or fail2ban?"/>
+  <Elicitation label="Document Dynamic DNS" query="How do I document Dynamic DNS integration in this README?"/>
+</Elicitations>

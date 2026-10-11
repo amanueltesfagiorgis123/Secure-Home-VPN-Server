@@ -36,8 +36,9 @@ A personal project implementing a lightweight, high-performance Virtual Private 
 ## ⚙️ Installation & Configuration Steps
 
 ### 1. Update System & Set Static IP
-Ensure the system is fully up to date and assigned a fixed local IP:
-```bash
-sudo apt update && sudo apt upgrade -y 
+### 2. Install PiVPN
+### 3. Configure Router Port Forwarding 
+### 4. Create a client profile 
+### 5. Connect your device 
 
-## 
+

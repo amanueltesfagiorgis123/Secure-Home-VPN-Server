@@ -1,0 +1,6 @@
+sudo apt update && sudo apt upgrade -y
+curl -L https://install.pivpn.io | bash
+pivpn add
+pivpn list
+pivpn -qr
+pivpn -r

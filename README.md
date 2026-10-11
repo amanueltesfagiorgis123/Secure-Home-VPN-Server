@@ -1,4 +1,4 @@
-# # Secure Home VPN Server (Raspberry Pi & WireGuard)
+#  Secure Home VPN Server (Raspberry Pi & WireGuard)
 
 A personal project implementing a lightweight, high-performance Virtual Private Network (VPN) server using a **Raspberry Pi** and **PiVPN / WireGuard**. This project establishes secure remote access to a home network, ensuring encrypted traffic routing and secure device management over public networks.
 
@@ -23,3 +23,21 @@ A personal project implementing a lightweight, high-performance Virtual Private 
 │ (Local Subnet Routing: 10.6.0.0/24)
 ▼
 [ Home Network Resources ]
+
+## 📋 Prerequisites & Hardware
+* **Hardware:** Raspberry Pi (running Raspberry Pi OS)
+* **Networking:** 
+  * Static local IP address assigned via router DHCP reservation.
+  * Port forwarding configured on the home router (UDP port forwarded to the Pi).
+* **Software:** PiVPN, WireGuard, OpenSSH Server
+
+---
+
+## ⚙️ Installation & Configuration Steps
+
+### 1. Update System & Set Static IP
+Ensure the system is fully up to date and assigned a fixed local IP:
+```bash
+sudo apt update && sudo apt upgrade -y 
+
+## 

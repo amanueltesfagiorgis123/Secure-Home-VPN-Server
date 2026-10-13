@@ -11,19 +11,6 @@ A personal project implementing a lightweight, high-performance Virtual Private 
 * **Headless Linux Administration:** Managed entirely via SSH on Raspberry Pi OS, emphasizing command-line proficiency and system maintenance.
 
 ---
-
-## 🛠️ Architecture & Network Topology
-[ Remote Client (Phone / Laptop) ]
-│ (Encrypted WireGuard Tunnel over Cellular/Public Wi-Fi)
-▼
-[ Home Internet Router (Port Forwarding UDP 51830) ]
-│
-▼
-[ Raspberry Pi VPN Server (Static Local IP) ]
-│ (Local Subnet Routing: 10.6.0.0/24)
-▼
-[ Home Network Resources ]
-
 ## 📋 Prerequisites & Hardware
 * **Hardware:** Raspberry Pi (running Raspberry Pi OS)
 * **Networking:** 
@@ -48,3 +35,41 @@ A personal project implementing a lightweight, high-performance Virtual Private 
   <Elicitation label="Add security best practices" query="How can I add a security section to this README covering firewall rules or fail2ban?"/>
   <Elicitation label="Document Dynamic DNS" query="How do I document Dynamic DNS integration in this README?"/>
 </Elicitations>
+
+## Network Topology & Architecture
+```mermaid
+flowchart TD
+    subgraph External [External / Remote Network]
+        RemoteClient[Remote Mobile / Laptop]
+    end
+
+    subgraph HomeNet [Home Network / LAN]
+        Router[Home Network Router<br/>Port Forward: 51820 UDP]
+        LocalClient[Local LAN Clients<br/>PC, Smart Devices]
+        
+        subgraph PiNode [Raspberry Pi Node]
+            VPN[WireGuard VPN Server<br/>Interface: wg0]
+            DNS[Pi-hole DNS Sinkhole<br/>Interface: eth0]
+        end
+    end
+
+    Upstream[Upstream DNS<br/>Cloudflare / Quad9]
+
+    %% External Traffic Flow
+    RemoteClient -->|Encrypted WireGuard Tunnel| Router
+    Router -->|Forward UDP 51820| VPN
+    VPN -->|Internal DNS Queries| DNS
+
+    %% Local Traffic Flow
+    LocalClient -->|DNS Queries Port 53| DNS
+
+    %% Outbound DNS Resolution
+    DNS -->|Filtered Upstream Queries| Upstream
+
+    %% Styling
+    style RemoteClient fill:#e2e8f0,stroke:#64748b,stroke-width:2px
+    style Router fill:#fef3c7,stroke:#d97706,stroke-width:2px
+    style LocalClient fill:#e2e8f0,stroke:#64748b,stroke-width:2px
+    style VPN fill:#dbeafe,stroke:#2563eb,stroke-width:2px
+    style DNS fill:#dcfce7,stroke:#16a34a,stroke-width:2px
+    style Upstream fill:#f3e8ff,stroke:#9333ea,stroke-width:2px
